@@ -1,0 +1,28 @@
+server:
+  port: 8889
+spring:
+  datasource:
+    url: jdbc:h2:./data/h2/DemoDB
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      path: /h2
+      enabled: true
+
+#  Return object null value is not displayed
+  jackson:
+    default-property-inclusion: non_null
+
+  devtools:  # Just for dev environment
+    restart:
+      enabled: true
+  freemarker:
+    cache: false
+
+
