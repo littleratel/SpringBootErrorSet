@@ -1,25 +1,42 @@
 server:
   port: 8889
 spring:
-  datasource:
-    url: jdbc:h2:./data/h2/DemoDB
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
-  jpa:
-    database: h2
-    hibernate:
-      ddl-auto: update
-  h2:
-    console:
-      path: /h2
-      enabled: true
+  #  datasource:
+  #    url: jdbc:h2:./data/h2/DemoDB
+  #    username: sa
+  #    password:
+  #    driverClassName: org.h2.Driver
+  #  jpa:
+  #    database: h2
+  #    hibernate:
+  #      ddl-auto: update
+  #  h2:
+  #    console:
+  #      path: /h2
+  #      enabled: true
 
-#  Return object null value is not displayed
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mybatis?serverTimezone=GMT%2B8&characterEncoding=utf8
+    username: root
+    password: root
+
+mybatis:
+  #classpath：只会到你的class路径中查找找文件;
+  #classpath*：不仅包含class路径，还包括jar文件中(class路径)进行查找.
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    default-statement-timeout: 60
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.city: info
+
+  #  Return object null value is not displayed
   jackson:
     default-property-inclusion: non_null
 
-  devtools:  # Just for dev environment
+  devtools: # Just for dev environment
     restart:
       enabled: true
   freemarker:
